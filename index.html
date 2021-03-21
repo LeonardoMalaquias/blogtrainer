@@ -8,13 +8,65 @@
 </head>
 <body>
     
+    <div id="app">
+        <h1>{{name}}</h1>
 
+        <div v-if="isLogged" key="logged">
+            <h4>Seja Bem Vindo {{username}}</h4>
+            <a href="#" @click.prevent="toggleLogin"> Fazer Logout</a>
+        </div>
+
+        <a href="#" @click.prevent="toggleLogin" v-else key="notLogged"> Fazer login</a>
+        
+
+        <div class="row post-item" v-for="post in posts">
+            <div class="col-8">
+                <img :src="post.img" :alt="post.imgTitle">
+                <h3>{{post.title}}</h3>
+                <p>{{post.post}}</p>
+            </div>
+        </div>
+    </div>
     
     <script src="node_modules/vue/dist/vue.min.js"></script>
     <script>
         let app = new Vue({
-            el: 'app',
-        
+            el: '#app',
+            data:{
+                name:"funcionando",
+                isLogged: false,
+                username: 'Joao',
+                posts:[{
+                        img: "./assets/img/goodbye_2-wallpaper-1280x768.jpg",
+                        imgTitle: 'Post1',
+                        title: 'Meu primeiro titulo',
+                        post: `
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis quam, a atque quidem ipsum cumque, ea architecto nihil aliquam tenetur modi inventore eius ullam corrupti iste quas ut rem at.
+                        `
+                    },
+                    {
+                        img: "./assets/img/fairytale_castle-wallpaper-1280x768.jpg",
+                        imgTitle: 'Post2',
+                        title: 'Meu segundo titulo',
+                        post: `
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis quam, a atque quidem ipsum cumque, ea architecto nihil aliquam tenetur modi inventore eius ullam corrupti iste quas ut rem at.
+                        `
+                    },
+                    {
+                        img: "./assets/img/beautiful_fantasy_castle-wallpaper-1280x768.jpg",
+                        imgTitle: 'Post3',
+                        title: 'Meu terceiro titulo',
+                        post: `
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis quam, a atque quidem ipsum cumque, ea architecto nihil aliquam tenetur modi inventore eius ullam corrupti iste quas ut rem at.
+                        `
+                    }
+                ]
+            },
+            methods:{
+                toggleLogin(){
+                    this.isLogged = !this.isLogged;
+                }
+            }
         })
     </script>
 </body>

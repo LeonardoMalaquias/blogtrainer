@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.0.0-alpha1",
     "vue": "^2.6.12",
     "vue2-filters": "^0.12.0"
   }
